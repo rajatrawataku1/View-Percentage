@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="circle.css">
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<script type="text/javascript" src="bootstrap.js"></script>
+
+<style type="text/css">
+	
+	#percentage_scroller
+	{
+		position: fixed;
+		top: 50%;
+		left: 80%;
+	}
+
+	#section1
+	{
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background-color: red;
+	}
+
+	#section2
+	{
+		position: absolute;
+		top: 100%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background-color: yellow;
+	}
+
+	#section3
+	{
+		position: absolute;
+		top: 200%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background-color: pink;
+	}
+
+	#section4
+	{
+		position: absolute;
+		top: 300%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background-color: blue;
+	}
+
+</style>
+
+</head>
+
+<body>
+
+	<div id="section1">
+	</div>
+
+	<div id="section2">
+	</div>
+
+	<div id="section3">
+	</div>
+
+	<div id="section4">
+	</div>
+
+	<div id="percentage_scroller">
+		<div class="clearfix ">
+	        <div class="c100 p0 big orange" id="hey">
+	            <span>0%</span>
+	            <div class="slice">
+	                <div class="bar"></div>
+	                <div class="fill"></div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+
+</body>
+
+
+
+
+
+<script type="text/javascript">
+	// script for changing the circle with respect to spy;
+
+	$(document).scroll(function(){
+		var max_scroll_value=$(document).height()-$(window).height(); 	// returns maximum value of the document scroll
+		var	current_scroll_value=$(this).scrollTop();
+		console.log("current scroll value"+current_scroll_value);
+		console.log("max scroll value "+max_scroll_value);
+		var percentage=Math.floor((current_scroll_value/max_scroll_value)*100);
+		console.log("current percentage"+percentage);
+		var value="c100 p"+percentage+" big orange";
+		$("#hey").removeClass($("#hey").attr("class")).addClass(value);
+		$("#hey").find("span").text(percentage+"%");
+	})
+	
+
+
+</script>
+</html>
